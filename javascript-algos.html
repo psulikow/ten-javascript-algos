@@ -1,14 +1,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
 <h3>
     Messages App
-    <button onclick="clearMessages()">
+    <button id = 'clear' onclick="clearMessages()">
         Clear Messages
     </button>
 </h3>
 <div>
-    <!-- TODO ADD AN ATTRIBUTE THAT focuses the CURSOR INTO THE TEXTAREA ELEMENT WHEN THE PAGE LOADS -->
-    <textarea 
-        autofocus
+    <textarea autofocus
         rows=6 
         cols=55 
         id="inputText" 
@@ -59,7 +59,7 @@
     }
 
     function clearMessages() {
-        /*TODO CLEAR MESSAGES FROM DOCUMENT WHEN USER CLICKS THE [CLEAR MESSAGES] BUTTON */
+        document.getElementById('inputText').value = "";
         /* EXTRA CREDIT INCLUDE A SCRIPT TAG THATS FETCHES BOOTSTRAP CSS STLYINGS AND STYLE THE BUTTONS */
     }
 
@@ -94,7 +94,7 @@
     }
     
     //TODO SET THE FLAG TO FALS ONCE YOU UNDERSTAND THE ASSIGNMENT
-    const instructionsFlag = true;
+    const instructionsFlag = false;
     if (instructionsFlag) {
         console.log(`README`);
         console.log(`
@@ -108,9 +108,6 @@
     }
     
 
-    /* TODO ADD ADDITONALY 
-       OBJECTS LIKE THE ONES BELOW, MINIMUM OF TEN.  
-       EACH MUST CONTAIN A FIRST AND LAST NAME AND HANDLE */
     const userNames = [
         {
             firstName: 'Chandler',
@@ -131,6 +128,46 @@
             firstName: 'Horace',
             lastName: 'Grant',
             handle: '@HGrant'
+        },
+        {
+            firstName: 'John',
+            lastName: 'Doe',
+            handle: '@JDoe'
+        },
+        {
+            firstName: 'Easter',
+            lastName: 'Egg',
+            handle: '@EEgg'
+        },
+        {
+            firstName: 'Ben',
+            lastName: 'Franklin',
+            handle: '@BFrank'
+        },
+        {
+            firstName: 'James',
+            lastName: 'Madison',
+            handle: '@JMad'
+        },
+        {
+            firstName: 'Adam',
+            lastName: 'Smith',
+            handle: '@ASmith'
+        },
+        {
+            firstName: 'Dante',
+            lastName: 'Alighieri',
+            handle: '@DAlighieri'
+        },
+        {
+            firstName: 'Publius',
+            lastName: 'Maro',
+            handle: '@PMaro'
+        },
+        {
+            firstName: 'Julius',
+            lastName: 'Caesar',
+            handle: '@JCaesar'
         }
     ];
 
