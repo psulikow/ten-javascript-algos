@@ -30,6 +30,15 @@
         }
     }
 
+    function clearFilteredNames() {
+        var rootDiv = document.getElementById('filteredNamesContainer');
+        if (rootDiv) {
+            while (rootDiv.hasChildNodes()) {
+                rootDiv.removeChild(rootDiv.lastChild);
+            }
+        }
+    }
+
     function initDocument() {
         clearNames();
         initUsersNames();
@@ -60,6 +69,8 @@
 
     function clearMessages() {
         document.getElementById('inputText').value = "";
+        clearFilteredNames();
+        initUsersNames();
         /* EXTRA CREDIT INCLUDE A SCRIPT TAG THATS FETCHES BOOTSTRAP CSS STLYINGS AND STYLE THE BUTTONS */
     }
 
@@ -212,6 +223,7 @@
 
     function initFilteredNames(filteredNames) {
         clearNames();
+        clearFilteredNames();
         var rootDiv = document.createElement('div');
         rootDiv.id = 'filteredNamesContainer';
         var namesContainer = document.createElement('div');
@@ -286,7 +298,7 @@
             'input',
             debounce(
                 searchNames,
-                20000
+                1000
             )
         );
         initDocument();
