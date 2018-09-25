@@ -229,13 +229,20 @@
         var namesContainer = document.createElement('div');
         filteredNames.forEach( (name) => {
             var nameElm = document.createElement('button');
+            nameElm.onclick = myFunction;
             nameElm.style['background-color'] = 'dodgerblue';
             nameElm.style['cursor'] = 'pointer';
             nameElm.setAttribute('class', 'filtered-name');
             var text = document.createTextNode(`${name.firstName} ${name.lastName}`);
             nameElm.appendChild(text);
             namesContainer.appendChild(nameElm);
-            
+
+
+            function myFunction() {
+                var x = document.getElementsByClassName("filtered-name");
+                alert("hello");
+            }
+
             /* 
                 TODO :: ADD CLICK EVENT LISTENER [addEventListener] TO EACH NAME ELEMENT.
                 IF THE USER CLICKS ON A FILTERED NAME THEN THEN A MESSAGE IS OUTPUT
