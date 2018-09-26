@@ -91,11 +91,9 @@
         handleSpan.style['color'] = 'dodgerblue';
         handleText = document.createTextNode(handle);
         handleSpan.appendChild(handleText);
-        // TODO:: EXCLUDING THE ORIGINALLY TYPED USER NAME REPLACE THIS TEXT \
-        //        WITH ANY ADDITIONAL USER TEXT FROM THE ORIGIN USER TEXT MESSAGE
-        var dummyText = 'TODO:: EXCLUDING THE ORIGINALLY TYPED USER NAME REPLACE THIS TEXT \
-                         WITH ANY ADDITIONAL USER TEXT FROM THE ORIGIN USER TEXT MESSAGE';
-        var messageText = document.createTextNode(`${dummyText} `);
+        var rawText = getUserText().toString();
+        var dummyText = rawText.substr(rawText.indexOf(' ')+1);
+        var messageText = document.createTextNode(`  ${dummyText} `);
         messageDiv.appendChild(handleSpan);
         messageDiv.appendChild(messageText);
         messagesContainer.appendChild(messageDiv);
@@ -104,7 +102,6 @@
         clearUserInput();
     }
     
-    //TODO SET THE FLAG TO FALS ONCE YOU UNDERSTAND THE ASSIGNMENT
     const instructionsFlag = false;
     if (instructionsFlag) {
         console.log(`README`);
@@ -233,37 +230,16 @@
             nameElm.style['background-color'] = 'dodgerblue';
             nameElm.style['cursor'] = 'pointer';
             nameElm.setAttribute('class', 'filtered-name');
+            nameElm.setAttribute('handle', name.handle);
             var text = document.createTextNode(`${name.firstName} ${name.lastName}`);
             nameElm.appendChild(text);
             namesContainer.appendChild(nameElm);
 
 
             function myFunction() {
-                var x = document.getElementsByClassName("filtered-name");
-                alert("hello");
+                var y = nameElm.getAttribute('handle');
+                addHandleMessage(y);
             }
-
-            /* 
-                TODO :: ADD CLICK EVENT LISTENER [addEventListener] TO EACH NAME ELEMENT.
-                IF THE USER CLICKS ON A FILTERED NAME THEN THEN A MESSAGE IS OUTPUT
-                USING THE ADD MESSAGE FUNCTION THAT REPLACES THE USER name WITH THE USER HANDLE.
-                THE addHandleMessage FUNCTION SHOULD BE INVOKED FROM INSIDE THE CALLBACK OF THE EVENT LISTENER.
-
-                TIPS:
-                    BRUTE FORCE :: ASIGN A UNIQUE ID TO EACH NAME ELEMENT, GRAB ID FROM THE EVENT AND
-                                   PASS IT AS AN ARGUMENT TO ADD MESSAGE FUNCTION THEN SEARCH USER NAMES ARRAY
-                    
-                    DATA ATTRIBUTE :: ASSIGN A DATA ATTRIBUTE CALLED [handle] TO EACH THE NAME ELEMENT
-                                      GRAB DATA ATTRIBUTE FROM THE EVENT AND PASS IT AS AN ARGUMENT TO 
-                                      ADD MESSAGE FUNCTION THEN SEARCH USER NAMES ARRAY
-
-                EXAMPLE: @chandler => @CGegg
-            */
-
-            //TODO WRAP THIS FUNCTION WITH EVENT LISTENER AND UNCOMMENT IT
-            //TODO REPLACE [myHandle] WITH THE USERS CORRECT HANDLE
-            // addHandleMessage('myHandle'); 
-
         });
         document.body.appendChild(namesContainer);
     }
@@ -299,13 +275,12 @@
             console.log('MISSING @ IN USER TEXT');
         }
     }
-    // TODO UPDATE THE DEBOUNCE DELAY TO MORE CLOSELY RESEMBLE USER TYPING
     document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById('inputText').addEventListener(
             'input',
             debounce(
                 searchNames,
-                1000
+                2000
             )
         );
         initDocument();
